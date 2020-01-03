@@ -7,7 +7,7 @@ from fabric.api import local
 def do_pack():
     local('mkdir -p versions')
     time = datetime.now()
-    folder = 'web_static'
+    folder = 'web_static_'
     name_file = "{}{}{}{}{}{}{}".format(folder,
                                         time.year, time.month, time.day,
                                         time.hour, time.minute, time.second)
