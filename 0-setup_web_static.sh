@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # This script prepare the web server to deploy static content
+apt-get -y update
+apt-get -y install nginx
 mkdir -p /data/web_static/releases/test/
 mkdir -p /data/web_static/shared/
 touch /data/web_static/releases/test/index.html
