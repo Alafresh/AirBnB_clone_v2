@@ -8,15 +8,19 @@ env.hosts = ['35.231.113.169', '34.73.247.107']
 
 
 def do_pack():
-    local('mkdir -p versions')
-    time = datetime.now()
-    folder = 'web_static_'
-    name_file = "{}{}{}{}{}{}{}.tgz".format(folder, time.year,
-                                            time.month, time.day,
-                                            time.hour, time.minute,
-                                            time.second)
-    local('tar -cavf {} web_static'.format(name_file))
-    local('mv *.tgz versions/')
+    try:
+        local('mkdir -p versions')
+        time = datetime.now()
+        folder = 'web_static_'
+        name_file = "{}{}{}{}{}{}{}.tgz".format(folder, time.year,
+                                                time.month, time.day,
+                                                time.hour, time.minute,
+                                                time.second)
+        local('tar -cavf {} web_static'.format(name_file))
+        local('mv *.tgz versions/')
+        return "versions/{}".format(name_file)
+    except:
+        return False
 
 
 def do_deploy(archive_path):
@@ -39,9 +43,10 @@ def do_deploy(archive_path):
     except Exception:
         return False
 
+
 def deploy():
     i = do_pack()
     if i is False:
         return False
-    else
+    else:
         return do_deploy(i)
