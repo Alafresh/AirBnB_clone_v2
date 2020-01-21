@@ -25,5 +25,5 @@ class State(BaseModel, Base):
             relation_n = []
             for data in citie_s.values():
                 if data.state_id == self.id:
-                    relation_n = relation_n.append(data)
+                    relation_n.append(data)
             return relation_n
