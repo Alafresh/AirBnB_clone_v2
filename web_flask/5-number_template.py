@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from flask import Flask, escape
+from flask import Flask, escape, render_template
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
@@ -35,8 +35,7 @@ def show_number(n):
 
 @app.route('/number_template/<int:n>')
 def template(n):
-    html = "<h1>Number: {}</h1>".format(n)
-    return html
+    return render_template('5-number.html', name=n)
 
 if __name__ == "__main__":
     app.run(debug=True)
