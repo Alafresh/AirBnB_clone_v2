@@ -14,7 +14,7 @@ def teardown_db(zzz):
 
 @app.route('/states_list')
 def display():
-    state = storage.all()
+    state = storage.all('State')
     return render_template('7-states_list.html', state=state)
 
 if __name__ == "__main__":
