@@ -14,10 +14,20 @@ def teardown_db(zzz):
 
 
 @app.route('/states')
+def list_states():
+    state = storage.all('State')
+    return render_template('7-states_list.html', state=state)
+
+
 @app.route('/states/<id>')
-def display(id=None):
+def display(id):
     states = storage.all('State')
-    return render_template('9-states.html', states=states, id=id)
+    id_l = None
+    for llave, valor in states.items():
+        if valor.id == id:
+            id_l = valor
+            break
+    return render_template('9-states.html', states=id_l)
 
 if __name__ == "__main__":
     app.run(debug=True)
