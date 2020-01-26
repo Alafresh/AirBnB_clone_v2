@@ -9,7 +9,7 @@ from models.review import Review
 import models
 
 place_amenity = Table(
-                'place_amenity', Base.metada,
+                'place_amenity', Base.metadata,
                 Column('place_id', String(60), ForeignKey('places.id')),
                 Column('amenity_id', String(60), ForeignKey('amenities.id')))
 
